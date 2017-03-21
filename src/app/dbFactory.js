@@ -1,11 +1,30 @@
-export default new function() {
-    this.set = (key, value) => this[key] = value;
+// export default new function() {
+//     this.set = (key, value) => this[key] = value;
+//
+//     this.get = key => this[key];
+//
+//     this.create = (name, methods) => this.context[name] = new DB(methods);
+//
+//     this.context = () => this.link = data => this.context.Data = data;
+// }
 
-    this.get = key => this[key];
+export default new class {
+    constructor() {
+        this.maps = new Map();
+    }
 
-    this.create = (name, methods) => this.context[name] = new DB(methods);
-
-    this.context = () => this.link = data => this.context.Data = data;
+    set(key, value) {
+        this.maps[key] = value;
+    }
+    get(key) {
+        return this.map[key]
+    }
+    create(name, methods) {
+        this.context[name] = new DB(methods)
+    }
+    context() {
+        this.link = data => this.context.Data = data
+    }
 }
 
 let urlPrefix = 'https:api.mizlicai.com';

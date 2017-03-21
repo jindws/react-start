@@ -7,6 +7,7 @@ mod  entry: {
       common: [
           "react-dom",
           "react-router-dom",
+          "jquery"
       ]
   },
 
@@ -18,7 +19,7 @@ mod  entry: {
     output: {
         path: path.resolve(__dirname, './dist'),
         filename: '[name].min.js', //最终打包生产的文件名
-        publicPath: 'https://cdn.mizlicai.com/mizdai/inapp-2.0/',
+        // publicPath: 'https://cdn.mizlicai.com/mizdai/inapp-2.0/',
     },
 
     devServer: {
@@ -67,6 +68,7 @@ mod  entry: {
                 warnings: false
             }
         }),
+        new webpack.ProvidePlugin({"$": "jquery"}),
         new HtmlWebpackPlugin({template: './index.html'}),
         new webpack.optimize.CommonsChunkPlugin({names: ['common'], minChunks: Infinity}),
         new webpack.BannerPlugin("Copyright HONGYUANZHANG inc."),
