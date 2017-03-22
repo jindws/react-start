@@ -15,17 +15,23 @@ class Home extends Component {
         month:2,
       }).then(re=>{
         this.setState({
-          datas:re.monthlyReport
+          // datas:re.monthlyReport
         })
+        this.refs.test.innerText = re.monthlyReport.year;
       })
     }
 
+    componentDidMount(){
+        this.request();
+    }
+
     render() {
-      console.log(this.state.datas)
+      // console.log(this.state.datas)
         return <section>
             我是首页
             <a href="javascript:;" id="request" onClick={this.request.bind(this)}>请求</a>
             请求的数据:{JSON.stringify(this.state.datas)}
+            <label ref='test'></label>
         </section>
     }
 }
