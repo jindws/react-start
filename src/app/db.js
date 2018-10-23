@@ -1,6 +1,6 @@
-import DBF from './dbFactory'
+import DBF from 'dbfac'
 
-export default DBF.context;
+export default DBF;
 
 DBF.create('TEST', {
     test:{

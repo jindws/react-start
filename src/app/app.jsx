@@ -4,7 +4,6 @@ import React, {Component} from 'react'
 import {render} from 'react-dom'
 
 import {
-  // BrowserRouter as Router,
   HashRouter as Router,
   Route,
   Link
@@ -13,8 +12,19 @@ import {
 import Home from '../pages/home'
 import About from '../pages/about'
 
+import {observable,action} from 'mobx';
+import {observer, Provider} from "mobx-react/custom"
 import DB from './db'
 
+class Store{
+    @observable title
+
+    @action _change = (name,value)=>{
+        this[name] = value
+    }
+}
+
+const nstore = new Store()
 
 const BasicExample = () => (
   <Router>
@@ -32,4 +42,8 @@ const BasicExample = () => (
   </Router>
 )
 
-render(<BasicExample/>, document.getElementById('app'));
+
+
+render(<Provider store={nstore}>
+    <BasicExample/>
+</Provider>, document.getElementById('app'));

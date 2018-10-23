@@ -30,10 +30,6 @@ module.exports = {
                 test: /\.jsx$/,
                 exclude: /node_modules/,
                 loader: 'babel-loader',
-
-                query: {
-                    presets: ['es2015', 'react']
-                }
             }, {
                 test: /\.js$/,
                 loader: 'babel-loader',
@@ -45,7 +41,6 @@ module.exports = {
         ]
     },
 
-    // devtool: 'hidden-source-map',
     devtool: 'eval',
     watch: true,
     performance: {
@@ -59,10 +54,7 @@ module.exports = {
             __PRO__: false, // 生产环境
         }),
         new HtmlWebpackPlugin({template: './index.html'}),
-        new webpack.ProvidePlugin({"$": "jquery"}),
-        new webpack.optimize.CommonsChunkPlugin({names: ['common'], minChunks: Infinity}),
-        new webpack.BannerPlugin("Copyright HONGYUANZHANG inc."),
-
+        // new webpack.optimize.CommonsChunkPlugin({names: ['common'], minChunks: Infinity}),
+        new webpack.BannerPlugin("Copyright jindw inc."),
     ]
-
 }
